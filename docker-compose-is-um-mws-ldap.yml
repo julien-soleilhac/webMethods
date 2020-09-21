@@ -75,7 +75,7 @@ services:
 
     mail:
       container_name: webMethods105_mail
-      image: webmethods105_mail:v5
+      image: webmethods105_mail:latest
       stdin_open: true # docker run -i
       tty: true        # docker run -t
       hostname: webmethods
