@@ -1,0 +1,22 @@
+
+version: '3'
+services:
+    sqlserver:
+      container_name: cgi_db
+      image: cgi_db:v1
+      stdin_open: true # docker run -i
+      tty: true        # docker run -t
+      hostname: webmethods
+      ports:
+        - "1433:1433"
+      environment:
+        - SA_PASSWORD=Manage100!
+        - ACCEPT_EULA=--accept-eula
+        - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      volumes:
+        - /home/sag/shared:/opt/shared
+      command:
+        - ./opt/mssql/bin/sqlservr
+
+      
+

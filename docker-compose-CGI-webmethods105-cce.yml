@@ -1,0 +1,27 @@
+
+version: '3'
+services:
+    cce:
+      container_name: cgi_cce
+      image: cgi_cce:v1
+      stdin_open: true # docker run -i
+      tty: true        # docker run -t
+      hostname: webmethods
+      ports:
+        - "8091:8091"
+        - "8191:8191"
+      environment:
+        - SAG_HOME=/opt/softwareag
+        - CC_HOME=/opt/sagtools
+        - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+        - CC_SERVER=localhost
+        - CC_CLI_HOME=/opt/sagtools/CommandCentral/client
+        - JAVA_HOME=/opt/sagtools/jvm/jvm/jre
+        - JRE_HOME=/opt/sagtools/jvm/jvm/jre
+      volumes:
+        - /home/sag/shared:/opt/shared
+      command:
+        - ./opt/sagtools/cce-entrypoint.sh
+
+      
+

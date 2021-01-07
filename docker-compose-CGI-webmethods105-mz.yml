@@ -1,0 +1,20 @@
+
+version: '3'
+services:
+    mashzone:
+      container_name: cgi_mz
+      image: cgi_mz:v1
+      stdin_open: true # docker run -i
+      tty: true        # docker run -t
+      hostname: webmethods
+      ports: 
+        - "8080:8080"
+        - "7021:7021"
+        - "7022:7022"
+      environment:
+        - JAVA_HOME=/opt/softwareag/jvm/jvm
+        - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      volumes:
+        - /home/sag/shared:/opt/shared
+      command:
+        - /bin/bash

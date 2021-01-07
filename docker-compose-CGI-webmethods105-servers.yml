@@ -1,9 +1,9 @@
 
-version: '2'
+version: '3'
 services:        
     wm:
-      container_name: webMethods105_v8
-      image: webmethods105:v7
+      container_name: cgi_wm
+      image: cgi_wm:v1
       stdin_open: true # docker run -i
       tty: true        # docker run -t
       hostname: webmethods
@@ -33,5 +33,8 @@ services:
         - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
         - LD_LIBRARY_PATH=/opt/softwareag/IntegrationServer/instances/default/lib/jars/
       volumes:
-        - /Users/julien/Documents/Docker/Docker_Data-Shared:/opt/shared
-  
+        - /home/sag/shared:/opt/shared
+      command:
+        - /bin/bash
+
+
