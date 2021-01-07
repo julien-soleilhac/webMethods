@@ -13,7 +13,9 @@ services:
         - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
       volumes:
         - c:/Docker/volumes/share:/share
-        
+      command:
+        - /bin/bash
+
     wm:
       container_name: webMethods105
       image: webmethods105:v5
@@ -51,6 +53,8 @@ services:
         - "sqlserver"
       links:
         - "sqlserver"
+      command:
+        - /bin/bash
 
     mashzone:
       container_name: webMethods105_mz
@@ -72,4 +76,6 @@ services:
       links:
         - "sqlserver"
         - "wm"
+      command:
+        - /bin/bash
 
